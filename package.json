@@ -1,0 +1,22 @@
+{
+  "name": "mutex-mind-backend",
+  "version": "1.0.0",
+  "description": "Mutex Mind backend API and database resources for managing IT exam preparation content including subjects, quizzes, exams, leaderboards, users, authentication, progress tracking, and competitive recruitment exam materials.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
