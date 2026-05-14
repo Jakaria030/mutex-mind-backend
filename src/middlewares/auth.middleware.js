@@ -3,7 +3,7 @@ import ApiError from "../utils/ApiError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import User from "../modules/user/user.model.js";
 
-const verifyToken = asyncHandler(async (req, _res, next) => {
+export const verifyToken = asyncHandler(async (req, _res, next) => {
     const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
@@ -21,5 +21,14 @@ const verifyToken = asyncHandler(async (req, _res, next) => {
     next();
 });
 
+export const verifyAdmin = asyncHandler(async (req, _res, next) => {
+    if (!req.user) {
+        throw new ApiError(401, "Unauthorized");
+    }
 
-export default verifyToken;
+    if (req.user.role !== "admin") {
+        throw new ApiError(403, "Forbidden - Admin access only");
+    }
+
+    next();
+});

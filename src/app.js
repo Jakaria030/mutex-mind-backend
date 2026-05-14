@@ -11,10 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Import routes
 import userRoutes from "./modules/user/user.route.js";
+import subjectRoute from "./modules/subject/subject.route.js";
 
 
 // Routes middlewares
 app.use("/api/users", userRoutes);
+app.use("/api/subjects", subjectRoute);
 
 
 // Health check route
