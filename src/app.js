@@ -9,9 +9,17 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
+// Import routes
+import userRoutes from "./modules/user/user.route.js";
+
+
+// Routes middlewares
+app.use("/api/users", userRoutes);
+
+
 // Health check route
 app.get("/", (_req, res) => {
-    res.send("JKCraft backend is running!");
+    res.send("Mutex Mind backend is running!");
 });
 
 // Global error handler
