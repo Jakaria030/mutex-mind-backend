@@ -11,13 +11,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Import routes
 import userRoutes from "./modules/user/user.route.js";
-import subjectRoute from "./modules/subject/subject.route.js";
-
+import subjectRoutes from "./modules/subject/subject.route.js";
+import examRoutes from "./modules/exam/exam.route.js";
+import questionRoutes from "./modules/question/question.route.js";
 
 // Routes middlewares
 app.use("/api/users", userRoutes);
-app.use("/api/subjects", subjectRoute);
-
+app.use("/api/subjects", subjectRoutes);
+app.use("/api/exams", examRoutes);
+app.use("/api/questions", questionRoutes);
 
 // Health check route
 app.get("/", (_req, res) => {
