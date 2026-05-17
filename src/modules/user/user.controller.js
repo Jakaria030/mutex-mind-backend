@@ -48,7 +48,7 @@ export const register = asyncHandler(async (req, res) => {
 export const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email, isActive: true });
     if (!user) {
         throw new ApiError(404, "User not found");
     }
@@ -142,5 +142,33 @@ export const changePassword = asyncHandler(async (req, res) => {
 
     return res.status(200).json(
         new ApiResponse(200, "Password changed successfully", null)
+    );
+});
+
+// For admin only
+export const getAllUser = asyncHandler(async (req, res) => {
+    const users = await User.find().select("-password -refreshToken -__v -createdAt -updatedAt");
+
+    return res.status(200).json(
+        new ApiResponse(200, "User fetch successfully.", { users })
+    );
+});
+
+export const toggleUserStatus = asyncHandler(async (req, res) => {
+    const { userId } = req.params;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        throw new ApiError(404, "User not found");
+    }
+
+    // toggle status
+    user.isActive = !user.isActive;
+
+    await user.save();
+
+    return res.status(200).json(
+        new ApiResponse(200, "User status updated successfully")
     );
 });
