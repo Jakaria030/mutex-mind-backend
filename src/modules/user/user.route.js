@@ -16,7 +16,7 @@ router.get("/profile", verifyToken, getProfile);
 router.patch("/profile", verifyToken, validate(updateProfileSchema), updateProfile);
 router.patch("/change-password", verifyToken, validate(changePasswordSchema), changePassword);
 
-// For admin only
+// ========== Only For Admin ==========
 router.get("/", verifyToken, verifyAdmin, getAllUser);
 router.patch("/toggle-status/:userId", verifyToken, verifyAdmin, toggleUserStatus);
 

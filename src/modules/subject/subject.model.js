@@ -15,6 +15,22 @@ const subjectSchema = new mongoose.Schema(
         },
         category: {
             type: String,
+            required: true,
+            trim: true,
+        },
+        categoryColor: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        iconName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        isPublished: {
+            type: Boolean,
+            default: false,
         }
     },
     {

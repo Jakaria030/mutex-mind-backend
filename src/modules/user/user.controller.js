@@ -145,7 +145,7 @@ export const changePassword = asyncHandler(async (req, res) => {
     );
 });
 
-// For admin only
+// ========== Only For Admin ==========
 export const getAllUser = asyncHandler(async (req, res) => {
     const users = await User.find().select("-password -refreshToken -__v -createdAt -updatedAt");
 
