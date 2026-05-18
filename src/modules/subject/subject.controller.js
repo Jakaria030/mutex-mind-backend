@@ -44,7 +44,7 @@ export const updateSubject = asyncHandler(async (req, res) => {
     }
 
     return res.status(200).json(
-        new ApiResponse(200, "Subject updated successfully", { subject: updateSubject })
+        new ApiResponse(200, "Subject updated successfully", { subject: updatedSubject })
     );
 });
 
