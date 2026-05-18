@@ -7,8 +7,8 @@ import { createQuestionSchema, updateQuestionSchema } from "./question.validatio
 
 const router = Router();
 
-// Admin routes
-router.post("/create", verifyToken, verifyAdmin, validate(createQuestionSchema), createQuestion);
+// ========== Only For Admin ==========
+router.post("/", verifyToken, verifyAdmin, validate(createQuestionSchema), createQuestion);
 
 router.get("/exam/:examId", verifyToken, verifyAdmin, getQuestionsByExam);
 

@@ -5,12 +5,9 @@ import Question from "./question.model.js";
 import Exam from "../exam/exam.model.js";
 
 
+// ========== Only For Admin ==========
 export const createQuestion = asyncHandler(async (req, res) => {
-
-    const {
-        exam,
-        questions,
-    } = req.body;
+    const { exam, questions } = req.body;
 
     // Check exam exists
     const examExists = await Exam.findById(exam);
@@ -26,7 +23,6 @@ export const createQuestion = asyncHandler(async (req, res) => {
 
     // Validate each question
     for (const item of questions) {
-
         const correctAnswers = item.options.filter(
             (option) => option.isCorrect
         );
